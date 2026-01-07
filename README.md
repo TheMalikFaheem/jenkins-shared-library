@@ -10,12 +10,12 @@ By using this library, you can replace hundreds of lines of complex `Jenkinsfile
 
 Detailed documentation for setup and usage is located in the `docs/` directory.
 
-| 📖 Topic | 🔍 Description | 🔗 Link |
+| Topic | Description | Link |
 | :--- | :--- | :--- |
-| **Getting Started** | Configuration steps to add this library to Jenkins. | [Read Guide](https://github.com/TheMalikFaheem/jenkins-shared-library/docs/getting-started.md) |
-| **Folder Structure** | Explanation of `vars`, `src`, and `resources`. | [Read Guide](https://github.com/TheMalikFaheem/jenkins-shared-library/folder-structure.md) |
-| **Example Pipelines** | Copy-paste templates for different project types. | [Read Guide](https://github.com/TheMalikFaheem/jenkins-shared-library/docs/example-jenkinsfile.md) |
-| **Best Practices** | Tips on versioning, security, and stability. | [Read Guide](https://github.com/TheMalikFaheem/jenkins-shared-library/docs/best-practices.md) |
+| **⚡ Getting Started** | How to configure Jenkins to use this library. | [Read Guide](docs/getting-started.md) |
+| **📂 Architecture** | Explanation of the folder structure (`vars`, `src`, etc). | [Read Guide](folder-structure.md) |
+| **📝 Examples** | Copy-paste `Jenkinsfile` templates for different projects. | [Read Guide](docs/example-jenkinsfile.md) |
+| **⭐ Best Practices** | Tips on versioning, security, and stability. | [Read Guide](docs/best-practices.md) |
 
 ---
 
