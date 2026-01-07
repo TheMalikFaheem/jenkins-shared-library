@@ -13,7 +13,7 @@ Detailed documentation for setup and usage is located in the `docs/` directory.
 | Topic | Description | Link |
 | :--- | :--- | :--- |
 | **⚡ Getting Started** | How to configure Jenkins to use this library. | [Read Guide](docs/getting-started.md) |
-| **📂 Architecture** | Explanation of the folder structure (`vars`, `src`, etc). | [Read Guide](folder-structure.md) |
+| **📂 Architecture** | Explanation of the folder structure (`vars`, `src`, etc). | [Read Guide](docs/folder-structure.md) |
 | **📝 Examples** | Copy-paste `Jenkinsfile` templates for different projects. | [Read Guide](docs/example-jenkinsfile.md) |
 | **⭐ Best Practices** | Tips on versioning, security, and stability. | [Read Guide](docs/best-practices.md) |
 
@@ -40,27 +40,34 @@ pipeline {
     stages {
         stage('📥 Checkout') {
             steps {
-                gitCheckout(url: '[https://github.com/TheMalikFaheem/django-notes-app.git](https://github.com/TheMalikFaheem/django-notes-app.git)')
+                gitCheckout(
+                    url: 'https://github.com/TheMalikFaheem/django-notes-app.git'
+                )
             }
         }
 
         stage('🏗️ Build & Push') {
             steps {
-                // Login to Docker Hub
                 dockerLogin(credentialsId: 'docker-hub-creds')
                 
-                // Build and Push
-                buildDockerImage(imageName: "${REGISTRY}/${APP_NAME}", tag: VERSION)
-                pushDockerImage(imageName: "${REGISTRY}/${APP_NAME}", tag: VERSION)
+                buildDockerImage(
+                    imageName: "${REGISTRY}/${APP_NAME}",
+                    tag: VERSION
+                )
+                pushDockerImage(
+                    imageName: "${REGISTRY}/${APP_NAME}",
+                    tag: VERSION
+                )
             }
         }
 
         stage('🚀 Deploy') {
             steps {
-                // Deploy using Docker Compose
-                deployWithCompose(projectName: APP_NAME, envFile: '.env.prod')
+                deployWithCompose(
+                    projectName: APP_NAME,
+                    envFile: '.env.prod'
+                )
                 
-                // Run Database Migrations
                 runMigrations(
                     containerName: "${APP_NAME}-backend-1",
                     command: "python manage.py migrate"
@@ -71,11 +78,16 @@ pipeline {
     
     post {
         always {
-            cleanupDocker(imageName: "${REGISTRY}/${APP_NAME}", tag: VERSION)
+            cleanupDocker(
+                imageName: "${REGISTRY}/${APP_NAME}",
+                tag: VERSION
+            )
         }
     }
 }
+```
 
+---
 
 ## 📂 Repository Structure
 
@@ -100,7 +112,7 @@ pipeline {
 
    - **Name**: `jenkins-shared-library`  
    - **Default Version**: `main`  
-   - **Project Repository**:  
+   - **Project Repository**:
      ```
      https://github.com/TheMalikFaheem/jenkins-shared-library.git
      ```
